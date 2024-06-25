@@ -77,9 +77,34 @@ if run_calc:
         csv = convert_df(results_df)
         
         st.download_button(
-           "Press to Download",
+           "Save image",
            csv,
-           str(name2 + ".csv"),
+           str(name2 + ".png"),
            "text/csv",
            key='download-csv'
         )
+
+                
+
+
+        def createImage(df):
+            fig = ff.create_table(results_df)
+            fig.update_layout(autosize=True)
+            fig.write_image(str(name + ".png", scale=2)
+
+                # Streamlit application
+        #st.write("DataFrame:")
+        #st.write(df)
+        
+        
+        st.button("Save Image", type="primary")
+
+        if st.button:
+        # Download button
+            with open("image.png", "rb") as file:
+                st.download_button(
+                    "Download as Image",
+                    data=file,
+                    file_name=name + ".png",
+                    mime="image/png",
+                )
