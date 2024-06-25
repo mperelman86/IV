@@ -16,12 +16,12 @@ col1,  col2,col3, col4 = st.columns([2,1,2,2])
 
 with col1:
     # UI for selecting name, attack2, defense2, hp2, level2
-    name2 = st.selectbox('Select Character Name', df_stats['Name'])
-    attack2 =st.slider('Input Additional Attack', 0, 15, 15)
-    defense2 = st.slider('Input Additional Defense', 0, 15, 15)
-    hp2 = st.slider('Input Additional HP', 0, 15, 15)
+    name2 = st.selectbox('Pokemon', df_stats['Name'])
+    attack2 =st.slider('Attack IV', 0, 15, 15)
+    defense2 = st.slider('Defense IV', 0, 15, 15)
+    hp2 = st.slider('HP IV', 0, 15, 15)
     #level2 = st.slider('Select Level', 0, 51, 25)
-    if st.button('Calculate CP Across Levels'):
+    if st.button('Generate CP Table'):
         run_calc = True
     else:
         run_calc = False
