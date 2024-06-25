@@ -12,18 +12,22 @@ name2 = st.selectbox('Select Character Name', df_stats['Name'])
 attack2 =st.slider('Input Additional Attack', 0, 15, 15)
 defense2 = st.slider('Input Additional Defense', 0, 15, 15)
 hp2 = st.slider('Input Additional HP', 0, 15, 15)
-level2 = st.slider('Select Level', 0, 51, 25)
+#level2 = st.slider('Select Level', 0, 51, 25)
 
 if st.button('Calculate'):
+    results = []
+    for level in range(1:52):
     # Find records in the CSVs
-    character_stats = df_stats[df_stats['Name'] == name2].iloc[0]
-    level_percent = df_levels[df_levels['Level'] == level2].iloc[0]['CPM']
-
-    # Calculation
-    total_attack = ((character_stats['Attack'] + attack2) * level_percent)
-    total_defense = (sqrt((character_stats['Defense'] + defense2 ) * level_percent))
-    total_hp = (sqrt((character_stats['HP'] + hp2) * level_percent))
-
-    result = math.floor((total_attack * total_defense * total_hp) / 10)
-
-    st.write('Calculated Value:', result)
+        character_stats = df_stats[df_stats['Name'] == name2].iloc[0]
+        level_percent = df_levels[df_levels['Level'] == level2].iloc[0]['CPM']
+    
+        # Calculation
+        total_attack = ((character_stats['Attack'] + attack2) * level_percent)
+        total_defense = (sqrt((character_stats['Defense'] + defense2 ) * level_percent))
+        total_hp = (sqrt((character_stats['HP'] + hp2) * level_percent))
+    
+        cp = math.floor((total_attack * total_defense * total_hp) / 10)
+        results.append({'Level': level, 'CP': cp})
+        
+    results_df = pd.DataFrame(results)
+    st.write(results_df)
