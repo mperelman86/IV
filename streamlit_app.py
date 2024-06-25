@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import math
 from math import sqrt
 
 # Load CSV data
@@ -23,6 +24,6 @@ if st.button('Calculate'):
     total_defense = (sqrt((character_stats['Defense'] + defense2 ) * level_percent))
     total_hp = (sqrt((character_stats['HP'] + hp2) * level_percent))
 
-    result = (total_attack * total_defense * total_hp) / 10
+    result = math.floor((total_attack * total_defense * total_hp) / 10)
 
     st.write('Calculated Value:', result)
