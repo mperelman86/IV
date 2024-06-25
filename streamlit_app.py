@@ -78,7 +78,7 @@ if run_calc:
         def createImage(df):
             fig = figure_factory.create_table(results_df)
             fig.update_layout(autosize=True)
-            fig.write_image(str(name2 + ".png"), scale=2, engine="kaleido"))
+            fig.write_image(str(name2 + ".png"), scale=2, engine="kaleido")
 
         csv = convert_df(results_df)
         
