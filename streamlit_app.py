@@ -83,7 +83,7 @@ if run_calc:
         csv = convert_df(results_df)
         
         createImage(results_df)
-        with open(str(name + ".png"), "rb") as file:
+        with open(str(name2 + ".png"), "rb") as file:
             st.download_button(
                 "Download as Image",
                 data=file,
