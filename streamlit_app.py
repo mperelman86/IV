@@ -90,7 +90,7 @@ if run_calc:
         def createImage(df):
             fig = ff.create_table(results_df)
             fig.update_layout(autosize=True)
-            fig.write_image(str(name + ".png", scale=2)
+            fig.write_image(str(name + ".png"), scale=2)
 
                 # Streamlit application
         #st.write("DataFrame:")
