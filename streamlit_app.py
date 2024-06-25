@@ -19,7 +19,7 @@ if st.button('Calculate'):
     for level in range(1,51):
     # Find records in the CSVs
         character_stats = df_stats[df_stats['Name'] == name2].iloc[0]
-        level_percent = df_levels[df_levels['Level'] == level2].iloc[0]['CPM']
+        level_percent = df_levels[df_levels['Level'] == level].iloc[0]['CPM']
     
         # Calculation
         total_attack = ((character_stats['Attack'] + attack2) * level_percent)
