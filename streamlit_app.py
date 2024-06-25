@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import math
+import kaleido
 from math import sqrt
 from plotly import figure_factory 
 
