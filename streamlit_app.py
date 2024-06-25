@@ -101,7 +101,7 @@ if run_calc:
 
         if st.button:
         # Download button
-            with open("image.png", "rb") as file:
+            with open(str(name+".png"), "rb") as file:
                 st.download_button(
                     "Download as Image",
                     data=file,
