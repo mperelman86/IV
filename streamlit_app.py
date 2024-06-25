@@ -16,7 +16,7 @@ hp2 = st.slider('Input Additional HP', 0, 15, 15)
 
 if st.button('Calculate'):
     results = []
-    for level in range(1:52):
+    for level in range(1,51):
     # Find records in the CSVs
         character_stats = df_stats[df_stats['Name'] == name2].iloc[0]
         level_percent = df_levels[df_levels['Level'] == level2].iloc[0]['CPM']
