@@ -77,9 +77,9 @@ if run_calc:
         csv = convert_df(results_df)
         
         st.download_button(
-           "Save image",
+           "Save csv",
            csv,
-           str(name2 + ".png"),
+           str(name2 + ".csv"),
            "text/csv",
            key='download-csv'
         )
