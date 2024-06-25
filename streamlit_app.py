@@ -20,9 +20,9 @@ if st.button('Calculate'):
 
     # Calculation
     total_attack = ((character_stats['Attack'] + attack2) * level_percent)
-    total_defense = (sqrt(character_stats['Defense'] + defense2) * level_percent)
-    total_hp = (sqrt(character_stats['HP'] + hp2) * level_percent)
+    total_defense = (sqrt((character_stats['Defense'] + defense2 ) * level_percent))
+    total_hp = (sqrt((character_stats['HP'] + hp2) * level_percent))
 
-    result = (total_attack + total_defense + total_hp) / 10
+    result = (total_attack * total_defense * total_hp) / 10
 
     st.write('Calculated Value:', result)
