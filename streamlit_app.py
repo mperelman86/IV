@@ -45,7 +45,7 @@ if run_calc:
     results_df = pd.DataFrame(results)
     results_df.set_index('Level', inplace=True)
     with col2:
-        table = results_df.style.set_table_styles([s1,s2]).hide(axis=0).to_html()     
+        table = results_df.style.set_table_styles([s1,s2]).to_html()     
         st.write(f'{table}', unsafe_allow_html=True)
         #st.sidebar.write("CP Values by Level", results_df)
         #st.markdown(results_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
