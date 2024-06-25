@@ -8,10 +8,10 @@ df_levels = pd.read_csv('cp_mod.csv',encoding='latin-1')  # CSV with level, perc
 
 # UI for selecting name, attack2, defense2, hp2, level2
 name2 = st.selectbox('Select Character Name', df_stats['Name'])
-attack2 = st.number_input('Input Additional Attack', min_value=0)
-defense2 = st.number_input('Input Additional Defense', min_value=0)
-hp2 = st.number_input('Input Additional HP', min_value=0)
-level2 = st.selectbox('Select Level', df_levels['Level'])
+attack2 =st.slider('Input Additional Attack', min_value=, 0, 15, 15))
+defense2 = st.slider('Input Additional Defense', min_value=, 0, 15, 15))
+hp2 = st.slider('Input Additional HP', min_value=, 0, 15, 15))
+level2 = st.slider('Select Level', min_value=, 0, 51, 25))
 
 if st.button('Calculate'):
     # Find records in the CSVs
@@ -21,7 +21,7 @@ if st.button('Calculate'):
     # Calculation
     total_attack = ((character_stats['Attack'] + attack2) * level_percent)
     total_defense = (sqrt(character_stats['Defense'] + defense2) * level_percent)
-    total_hp = (sqrt(character_stats['Hp'] + hp2) * level_percent)
+    total_hp = (sqrt(character_stats['HP'] + hp2) * level_percent)
 
     result = (total_attack + total_defense + total_hp) / 10
 
