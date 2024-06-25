@@ -98,7 +98,7 @@ if run_calc:
            "text/csv",
            key='download-csv'
         )
-
+    run_calc = True
                 
 
 
