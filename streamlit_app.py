@@ -12,7 +12,7 @@ s2 = dict(selector='td', props=[('text-align', 'center')])
 df_stats = pd.read_csv('stats.csv',encoding='latin-1')  # CSV with name, attack, defense, hp
 df_levels = pd.read_csv('cp_mod.csv',encoding='latin-1')  # CSV with level, percent
 
-col1, col2 = st.columns([1, 3])
+col1, col2, col3 = st.columns([1,1,1])
 
 with col1:
     # UI for selecting name, attack2, defense2, hp2, level2
@@ -45,8 +45,13 @@ if run_calc:
     results_df = pd.DataFrame(results)
     results_df.set_index('Level', inplace=True)
     with col2:
-        table = results_df.style.set_table_styles([s1,s2]).to_html()     
-        st.write(f'{table}', unsafe_allow_html=True)
+        
+        table1 = results_df[0:24].style.set_table_styles([s1,s2]).to_html()     
+        st.write(f'{table1}', unsafe_allow_html=True)
         #st.sidebar.write("CP Values by Level", results_df)
         #st.markdown(results_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
         #st.write(results_df)
+    with col3 :
+        
+        table2 = results_df[25:50].style.set_table_styles([s1,s2]).to_html()     
+        st.write(f'{table2}', unsafe_allow_html=True)
