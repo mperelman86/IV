@@ -7,7 +7,7 @@ from math import sqrt
 df_stats = pd.read_csv('stats.csv',encoding='latin-1')  # CSV with name, attack, defense, hp
 df_levels = pd.read_csv('cp_mod.csv',encoding='latin-1')  # CSV with level, percent
 
-col1, col2 = st.columns([1, 2])
+col1, col2 = st.columns([1, 3])
 
 with col1:
     # UI for selecting name, attack2, defense2, hp2, level2
