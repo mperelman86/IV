@@ -7,14 +7,22 @@ from math import sqrt
 df_stats = pd.read_csv('stats.csv',encoding='latin-1')  # CSV with name, attack, defense, hp
 df_levels = pd.read_csv('cp_mod.csv',encoding='latin-1')  # CSV with level, percent
 
-# UI for selecting name, attack2, defense2, hp2, level2
-name2 = st.selectbox('Select Character Name', df_stats['Name'])
-attack2 =st.slider('Input Additional Attack', 0, 15, 15)
-defense2 = st.slider('Input Additional Defense', 0, 15, 15)
-hp2 = st.slider('Input Additional HP', 0, 15, 15)
-#level2 = st.slider('Select Level', 0, 51, 25)
+col1, col2 = st.columns([1, 3])
 
-if st.button('Calculate'):
+with col1:
+    # UI for selecting name, attack2, defense2, hp2, level2
+    name2 = st.selectbox('Select Character Name', df_stats['Name'])
+    attack2 =st.slider('Input Additional Attack', 0, 15, 15)
+    defense2 = st.slider('Input Additional Defense', 0, 15, 15)
+    hp2 = st.slider('Input Additional HP', 0, 15, 15)
+    #level2 = st.slider('Select Level', 0, 51, 25)
+    col1, col2 = st.columns([1, 3])
+    if st.button('Calculate CP Across Levels'):
+        run_calc = True
+    else:
+        run_calc = False
+
+if run_calc:
     results = []
     for level in range(1,51):
     # Find records in the CSVs
@@ -32,6 +40,8 @@ if st.button('Calculate'):
         
     results_df = pd.DataFrame(results)
     results_df.set_index('Level', inplace=True)
-    st.sidebar.write("CP Values by Level", results_df)
+with col2:
+    st.table(results_df) 
+    #st.sidebar.write("CP Values by Level", results_df)
     #st.markdown(results_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
     #st.write(results_df)
