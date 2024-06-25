@@ -95,17 +95,14 @@ if run_calc:
                 # Streamlit application
         #st.write("DataFrame:")
         #st.write(df)
-        
-        
-        st.button("Save Image", type="primary")
+    
 
-        if st.button:
         # Download button
-            createImage(results_df)
-            with open(str(name+".png"), "rb") as file:
-                st.download_button(
-                    "Download as Image",
-                    data=file,
-                    file_name=name + ".png",
-                    mime="image/png",
-                )
+        createImage(results_df)
+        with open(str(name + ".png"), "rb") as file:
+            st.download_button(
+                "Download as Image",
+                data=file,
+                file_name=name + ".png",
+                mime="image/png",
+            )
