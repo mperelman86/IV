@@ -38,7 +38,7 @@ if run_calc:
         total_defense = (sqrt((character_stats['Defense'] + defense2 ) * level_percent))
         total_hp = (sqrt((character_stats['HP'] + hp2) * level_percent))
     
-        cp = min(math.floor((total_attack * total_defense * total_hp) / 10),10)
+        cp = maX(math.floor((total_attack * total_defense * total_hp) / 10),10)
         results.append({'Level': level, 'CP': cp})
         
         
