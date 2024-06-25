@@ -1,40 +1,28 @@
-import altair as alt
-import numpy as np
-import pandas as pd
 import streamlit as st
+import pandas as pd
+from math import sqrt
 
-"""
-# Welcome to Streamlit!
+# Load CSV data
+df_stats = pd.read_csv('stats.csv')  # CSV with name, attack, defense, hp
+df_levels = pd.read_csv('levels.csv')  # CSV with level, percent
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:.
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+# UI for selecting name, attack2, defense2, hp2, level2
+name2 = st.selectbox('Select Character Name', df_stats['name'])
+attack2 = st.number_input('Input Additional Attack', min_value=0)
+defense2 = st.number_input('Input Additional Defense', min_value=0)
+hp2 = st.number_input('Input Additional HP', min_value=0)
+level2 = st.selectbox('Select Level', df_levels['level'])
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+if st.button('Calculate'):
+    # Find records in the CSVs
+    character_stats = df_stats[df_stats['name'] == name2].iloc[0]
+    level_percent = df_levels[df_levels['level'] == level2].iloc[0]['percent']
 
-num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
-num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
+    # Calculation
+    total_attack = ((character_stats['attack'] + attack2) * level_percent)
+    total_defense = (sqrt(character_stats['defense'] + defense2) * level_percent)
+    total_hp = (sqrt(character_stats['hp'] + hp2) * level_percent)
 
-indices = np.linspace(0, 1, num_points)
-theta = 2 * np.pi * num_turns * indices
-radius = indices
+    result = (total_attack + total_defense + total_hp) / 10
 
-x = radius * np.cos(theta)
-y = radius * np.sin(theta)
-
-df = pd.DataFrame({
-    "x": x,
-    "y": y,
-    "idx": indices,
-    "rand": np.random.randn(num_points),
-})
-
-st.altair_chart(alt.Chart(df, height=700, width=700)
-    .mark_point(filled=True)
-    .encode(
-        x=alt.X("x", axis=None),
-        y=alt.Y("y", axis=None),
-        color=alt.Color("idx", legend=None, scale=alt.Scale()),
-        size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
-    ))
+    st.write('Calculated Value:', result)
