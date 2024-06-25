@@ -28,7 +28,7 @@ with col1:
 
 if run_calc:
     results = []
-    for level in range(1,51):
+    for level in range(1,52):
     # Find records in the CSVs
         character_stats = df_stats[df_stats['Name'] == name2].iloc[0]
         level_percent = df_levels[df_levels['Level'] == level].iloc[0]['CPM']
@@ -38,7 +38,7 @@ if run_calc:
         total_defense = (sqrt((character_stats['Defense'] + defense2 ) * level_percent))
         total_hp = (sqrt((character_stats['HP'] + hp2) * level_percent))
     
-        cp = math.floor((total_attack * total_defense * total_hp) / 10)
+        cp = min(math.floor((total_attack * total_defense * total_hp) / 10),10)
         results.append({'Level': level, 'CP': cp})
         
         
@@ -53,5 +53,5 @@ if run_calc:
         #st.write(results_df)
     with col4 :
         
-        table2 = results_df[25:51].style.hide(axis="index").set_table_styles([s1,s2]).to_html()     
+        table2 = results_df[25:52].style.hide(axis="index").set_table_styles([s1,s2]).to_html()     
         st.write(f'{table2}', unsafe_allow_html=True)
