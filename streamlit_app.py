@@ -68,18 +68,18 @@ if run_calc:
         
         table2 = results_df[25:52].style.hide(axis="index").set_table_styles([s1,s2]).to_html()     
         st.write(f'{table2}', unsafe_allow_html=True)
-  with col1:
-    @st.cache_data
-    def convert_df(df):
-       return df.to_csv(index=False).encode('utf-8')
-    
-    
-    csv = convert_df(results_df)
-    
-    st.download_button(
-       "Press to Download",
-       csv,
-       str(name2 + ".csv"),
-       "text/csv",
-       key='download-csv'
-    )
+    with col1:
+        @st.cache_data
+        def convert_df(df):
+           return df.to_csv(index=False).encode('utf-8')
+        
+        
+        csv = convert_df(results_df)
+        
+        st.download_button(
+           "Press to Download",
+           csv,
+           str(name2 + ".csv"),
+           "text/csv",
+           key='download-csv'
+        )
