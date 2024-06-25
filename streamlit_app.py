@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import math
 from math import sqrt
-import plotly.figure_factory as ff
+from plotly import figure_factory 
 
 st.markdown(
     """
@@ -75,7 +75,7 @@ if run_calc:
            return df.to_csv(index=False).encode('utf-8')
         
         def createImage(df):
-            fig = ff.create_table(results_df)
+            fig = figure_factory.create_table(results_df)
             fig.update_layout(autosize=True)
             fig.write_image(str(name + ".png"), scale=2)
 
