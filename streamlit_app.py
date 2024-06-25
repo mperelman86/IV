@@ -3,6 +3,13 @@ import pandas as pd
 import math
 from math import sqrt
 
+hide_github_icon = """
+#GithubIcon {
+  visibility: hidden;
+}
+"""
+st.markdown(hide_github_icon, unsafe_allow_html=True)
+
 s1 = dict(selector='th', props=[('text-align', 'center')])
 s2 = dict(selector='td', props=[('text-align', 'center')])
 # you can include more styling paramteres, check the pandas docs
