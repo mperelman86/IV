@@ -4,7 +4,7 @@ from math import sqrt
 
 # Load CSV data
 df_stats = pd.read_csv('stats.csv')  # CSV with name, attack, defense, hp
-df_levels = pd.read_csv('levels.csv')  # CSV with level, percent
+df_levels = pd.read_csv('cp_mod.csv')  # CSV with level, percent
 
 # UI for selecting name, attack2, defense2, hp2, level2
 name2 = st.selectbox('Select Character Name', df_stats['name'])
