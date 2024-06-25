@@ -5,10 +5,16 @@ import kaleido
 from math import sqrt
 from plotly import figure_factory 
 
-st.markdown("""
-.css-m70y {display:none}
-“”", unsafe_allow_html=True)
-
+st.markdown(
+    """
+    <style>
+.css-m70y {display:none}{
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 st.markdown(
     """
     <style>
