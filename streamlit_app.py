@@ -77,7 +77,7 @@ if run_calc:
         def createImage(df):
             fig = figure_factory.create_table(results_df)
             fig.update_layout(autosize=True)
-            fig.write_image(str(name + ".png"), scale=2)
+            fig.write_image(str(name2 + ".png"), scale=2)
 
         csv = convert_df(results_df)
         
@@ -86,7 +86,7 @@ if run_calc:
             st.download_button(
                 "Download as Image",
                 data=file,
-                file_name= str(name + ".png"),
+                file_name= str(name2 + ".png"),
                 mime="image/png",
             )
 
