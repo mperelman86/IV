@@ -3,12 +3,18 @@ import pandas as pd
 import math
 from math import sqrt
 
-hide_github_icon = """
-#GithubIcon {
-  visibility: hidden;
-}
-"""
-st.markdown(hide_github_icon, unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 s1 = dict(selector='th', props=[('text-align', 'center')])
 s2 = dict(selector='td', props=[('text-align', 'center')])
@@ -62,3 +68,18 @@ if run_calc:
         
         table2 = results_df[25:52].style.hide(axis="index").set_table_styles([s1,s2]).to_html()     
         st.write(f'{table2}', unsafe_allow_html=True)
+  with col1:
+    @st.cache_data
+    def convert_df(df):
+       return df.to_csv(index=False).encode('utf-8')
+    
+    
+    csv = convert_df(results_df)
+    
+    st.download_button(
+       "Press to Download",
+       csv,
+       str(name2 + ".csv"),
+       "text/csv",
+       key='download-csv'
+    )
