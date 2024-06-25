@@ -3,6 +3,11 @@ import pandas as pd
 import math
 from math import sqrt
 
+s1 = dict(selector='th', props=[('text-align', 'center')])
+s2 = dict(selector='td', props=[('text-align', 'center')])
+# you can include more styling paramteres, check the pandas docs
+
+
 # Load CSV data
 df_stats = pd.read_csv('stats.csv',encoding='latin-1')  # CSV with name, attack, defense, hp
 df_levels = pd.read_csv('cp_mod.csv',encoding='latin-1')  # CSV with level, percent
@@ -40,7 +45,8 @@ if run_calc:
     results_df = pd.DataFrame(results)
     results_df.set_index('Level', inplace=True)
     with col2:
-        st.table(results_df) 
+        table = results_df.style.set_table_styles([s1,s2]).hide(axis=0).to_html()     
+        st.write(f'{table}', unsafe_allow_html=True)
         #st.sidebar.write("CP Values by Level", results_df)
         #st.markdown(results_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
         #st.write(results_df)
