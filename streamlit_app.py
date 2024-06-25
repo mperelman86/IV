@@ -29,5 +29,8 @@ if st.button('Calculate'):
         cp = math.floor((total_attack * total_defense * total_hp) / 10)
         results.append({'Level': level, 'CP': cp})
         
+        
     results_df = pd.DataFrame(results)
-    st.write(results_df)
+    results_df.set_index('Level', inplace=True)
+    st.markdown(results_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
+    #st.write(results_df)
