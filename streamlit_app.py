@@ -12,7 +12,7 @@ s2 = dict(selector='td', props=[('text-align', 'center')])
 df_stats = pd.read_csv('stats.csv',encoding='latin-1')  # CSV with name, attack, defense, hp
 df_levels = pd.read_csv('cp_mod.csv',encoding='latin-1')  # CSV with level, percent
 
-col1,  col2,col3, col4 = st.columns([1,1,2,2])
+col1,  col2,col3, col4 = st.columns([2,1,2,2])
 
 with col1:
     # UI for selecting name, attack2, defense2, hp2, level2
