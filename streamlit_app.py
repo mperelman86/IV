@@ -43,15 +43,15 @@ if run_calc:
         
         
     results_df = pd.DataFrame(results)
-    results_df.set_index('Level', inplace=True)
+    #results_df.set_index('Level', inplace=True)
     with col2:
         
-        table1 = results_df[0:25].style.set_table_styles([s1,s2]).to_html()     
+        table1 = results_df[0:25].style.hide(axis="index").set_table_styles([s1,s2]).to_html()     
         st.write(f'{table1}', unsafe_allow_html=True)
         #st.sidebar.write("CP Values by Level", results_df)
         #st.markdown(results_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
         #st.write(results_df)
     with col3 :
         
-        table2 = results_df[25:51].style.set_table_styles([s1,s2]).to_html()     
+        table2 = results_df[25:51].style.hide(axis="index").set_table_styles([s1,s2]).to_html()     
         st.write(f'{table2}', unsafe_allow_html=True)
