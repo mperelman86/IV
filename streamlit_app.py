@@ -101,6 +101,7 @@ if run_calc:
 
         if st.button:
         # Download button
+            createImage(results_df)
             with open(str(name+".png"), "rb") as file:
                 st.download_button(
                     "Download as Image",
