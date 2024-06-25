@@ -86,7 +86,7 @@ if run_calc:
             st.download_button(
                 "Download as Image",
                 data=file,
-                file_name=name + ".png",
+                file_name= str(name + ".png"),
                 mime="image/png",
             )
 
