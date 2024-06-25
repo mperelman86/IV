@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import math
 from math import sqrt
+import plotly.figure_factory as ff
 
 st.markdown(
     """
@@ -73,7 +74,11 @@ if run_calc:
         def convert_df(df):
            return df.to_csv(index=False).encode('utf-8')
         
-        
+        def createImage(df):
+            fig = ff.create_table(results_df)
+            fig.update_layout(autosize=True)
+            fig.write_image(str(name + ".png"), scale=2)
+
         csv = convert_df(results_df)
         
         st.download_button(
@@ -87,10 +92,6 @@ if run_calc:
                 
 
 
-        def createImage(df):
-            fig = ff.create_table(results_df)
-            fig.update_layout(autosize=True)
-            fig.write_image(str(name + ".png"), scale=2)
 
                 # Streamlit application
         #st.write("DataFrame:")
