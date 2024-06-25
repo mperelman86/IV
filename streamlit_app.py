@@ -11,7 +11,7 @@ name2 = st.selectbox('Select Character Name', df_stats['Name'])
 attack2 =st.slider('Input Additional Attack', 0, 15, 15)
 defense2 = st.slider('Input Additional Defense', 0, 15, 15)
 hp2 = st.slider('Input Additional HP', 0, 15, 15)
-level2 = st.slider('Select Level', 0, 15, 15)
+level2 = st.slider('Select Level', 0, 51, 25)
 
 if st.button('Calculate'):
     # Find records in the CSVs
