@@ -81,6 +81,15 @@ if run_calc:
 
         csv = convert_df(results_df)
         
+        createImage(results_df)
+        with open(str(name + ".png"), "rb") as file:
+            st.download_button(
+                "Download as Image",
+                data=file,
+                file_name=name + ".png",
+                mime="image/png",
+            )
+
         st.download_button(
            "Save csv",
            csv,
@@ -97,13 +106,4 @@ if run_calc:
         #st.write("DataFrame:")
         #st.write(df)
     
-
         # Download button
-        createImage(results_df)
-        with open(str(name + ".png"), "rb") as file:
-            st.download_button(
-                "Download as Image",
-                data=file,
-                file_name=name + ".png",
-                mime="image/png",
-            )
