@@ -40,8 +40,8 @@ if run_calc:
         
     results_df = pd.DataFrame(results)
     results_df.set_index('Level', inplace=True)
-with col2:
-    st.table(results_df) 
-    #st.sidebar.write("CP Values by Level", results_df)
-    #st.markdown(results_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
-    #st.write(results_df)
+    with col2:
+        st.table(results_df) 
+        #st.sidebar.write("CP Values by Level", results_df)
+        #st.markdown(results_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
+        #st.write(results_df)
