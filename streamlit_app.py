@@ -32,5 +32,6 @@ if st.button('Calculate'):
         
     results_df = pd.DataFrame(results)
     results_df.set_index('Level', inplace=True)
-    st.markdown(results_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
+     st.sidebar.write("CP Values by Level", results_df)
+    #st.markdown(results_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
     #st.write(results_df)
