@@ -16,7 +16,6 @@ with col1:
     defense2 = st.slider('Input Additional Defense', 0, 15, 15)
     hp2 = st.slider('Input Additional HP', 0, 15, 15)
     #level2 = st.slider('Select Level', 0, 51, 25)
-    col1, col2 = st.columns([1, 3])
     if st.button('Calculate CP Across Levels'):
         run_calc = True
     else:
